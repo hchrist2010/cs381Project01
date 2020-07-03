@@ -185,12 +185,6 @@ sub clean{
 
 	# This loops through each track
 	foreach my $title (@tracks) {
-		$title =~ s/^\'//g;
-		$title =~ s/\'$//g;
-		$title =~ s/^\s//g;
-		$title =~ s/\s$//g;
-
-
 		##########################
 		# TASK 4 #
 		##########################
@@ -199,16 +193,17 @@ sub clean{
 		##########################
 
 		# replace leading/trailing apostrophe
-		# <your code here>
+		$title =~ s/^'*//g;
+		$title =~ s/'*$//g;
 
 		# trim whitespace on either end
-		# <your code here>
+		$title =~ s/^\s*//g;
+		$title =~ s/\s*$//g;
 
 		########################## End Task 4
 
 
-
-		##########################
+  	##########################
 		# TASK 5 #
 		##########################
 		## Filter out non-ASCII characters
@@ -216,10 +211,18 @@ sub clean{
 		##########################
 
 		# skip title if contains any single non-English character
-		# <your code here>
+
+#		next if ($title =~ m/[])
+
+#		next if ($title =~ m/[^\x00-\x7F]+/g);
+
+		next if ($title =~ m/[^\w|\s|']/g);
+		if ($title =~ m/[^\x00-\x7F]+/g){
+			print("$title\n");
+		}
+
 
 		########################## End Task 5
-
 
 
 		##########################
@@ -230,25 +233,26 @@ sub clean{
 		##########################
 
 		# skip if only contains only an apostrophe
-		# <your code here>
+		next if ($title =~ m/^'*$/);
 
 		# skip if only contains whitespace
-		# <your code here>
+		next if ($title =~ /^\s*$/);
 
 		########################## End Task 6
-
-
 
 		##########################
 		# TASK 7 #
 		##########################
 		## Set to lowercase
-		##########################
-		# minor edit needed to this line (perl has a handy function)
+		$title = lc $title;
+
 		push @filteredtitles, $title;
 		########################## End Task 7
 
+
+
 	}
+
 	# Updates @tracks
 	return @filteredtitles;
 }
