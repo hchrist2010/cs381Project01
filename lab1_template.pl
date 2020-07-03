@@ -1,11 +1,11 @@
-######################################### 	
+#########################################
 #    CS 381 - Programming Lab #1		#
 #										#
-#  < Replace with your Name >			#
-#  < Replace with your Email >			#
+#  Hunter Christiansen				#
+#  christhu@oregonstate.edu			#
 #										#
 #########################################
-my $name = "change to your first name";
+my $name = "Hunter";
 
 #########################################
 ##
@@ -18,7 +18,7 @@ my $name = "change to your first name";
 #########################################
 
 #########################################
-# VARIABLE DEFINITIONS 
+# VARIABLE DEFINITIONS
 #########################################
 
 # pseudo-constants...
@@ -47,22 +47,22 @@ my %word_history = ();
 sub extract_title{
 	if ($DEBUG){print "<extracting titles>\n";}
 	my @tracktitles = ();
-	
-	foreach my $track (@tracks) { 
-	
+
+	foreach my $track (@tracks) {
+
 		##########
 		# TASK 1 #
 		##########
 		## Edit the regex below to capture only song title
 		##
 		if ($line =~ /(.*)/){
-		##		
+		##
 		############################# End Task 1
 			# $1 should be the title caught by regex first set of parens
-			# It is added to end of the array		
+			# It is added to end of the array
 			push @tracktitles, $1;
 		}
-	} 
+	}
 	# Updates @tracks
 	return @tracktitles;
 }
@@ -75,26 +75,26 @@ sub comments{
 	my @filteredtitles = ();
 
 	print "$name has not yet implemented filter comments.\n";  # delete when earned
-	
+
 	# This loops through each track
-	foreach my $title (@tracks) { 
+	foreach my $title (@tracks) {
 
 		##########################
 		# TASK 2 #
 		##########################
 		## Add regex substitutions to remove superflous comments and all that follows them
 		##########################
-		
+
 
 		##########################
-		##                      ## 
+		##                      ##
 		## <Insert code here>   ##
-		##                      ##   
+		##                      ##
 		##########################
-		
+
 
 		########################## End Task 2
-		
+
 		# Add the edited $title to the new array of titles
 		push @filteredtitles, $title;
 	}
@@ -119,19 +119,19 @@ sub punctuation{
 	## Make sure to add you edited title to the new @filteredtitles array,
 	##    which replaces @tracks when returned.
 	##########################
-	
-	
+
+
 	##########################
-	##                      ## 
+	##                      ##
 	## <Insert code here>   ##
-	##                      ##   
+	##                      ##
 	##########################
 	print "$name has not yet implemented filter punctuation.\n";  # delete when earned
 
 	########################## End Task 3
-	
-	# Updates @tracks	
-	return @filteredtitles;			
+
+	# Updates @tracks
+	return @filteredtitles;
 }
 
 
@@ -141,84 +141,84 @@ sub clean{
 	if ($DEBUG){print "<filtering non-ASCII characters>\n";}
 	my @filteredtitles = ();
 
-	
+
 	##########################
 	# TASK 4, 5, 6, 7 Below  #
 	##########################
 	## These are small tasks, where each "<your code here>"
-	##   will be either a regex substitution 
+	##   will be either a regex substitution
 	##   or an if statement and a subsequent action (e.g. skip to next without adding)
 	##########################
-	
-	print "$name has not yet implemented filter unicode.\n";  # delete when earned	
-		
-	# This loops through each track
-	foreach my $title (@tracks) { 
 
-	
+	print "$name has not yet implemented filter unicode.\n";  # delete when earned
+
+	# This loops through each track
+	foreach my $title (@tracks) {
+
+
 		##########################
 		# TASK 4 #
 		##########################
 		## Add regex substitutions to trim leading and trailing whitespace
-		##    and leading and trailing apostrophes. 
+		##    and leading and trailing apostrophes.
 		##########################
-	
+
 		# replace leading/trailing apostrophe
 		# <your code here>
-		
+
 		# trim whitespace on either end
 		# <your code here>
-	
+
 		########################## End Task 4
-	
-	
-	
+
+
+
 		##########################
 		# TASK 5 #
 		##########################
-		## Filter out non-ASCII characters 
+		## Filter out non-ASCII characters
 		## (letters, numbers, apostophe allowed)
 		##########################
-	
+
 		# skip title if contains any single non-English character
 		# <your code here>
-		
+
 		########################## End Task 5
-	
-		
-	
+
+
+
 		##########################
 		# TASK 6 #
 		##########################
-		## Skip title is blank, contains only whitespace, 
+		## Skip title is blank, contains only whitespace,
 		## or contains only apostrophe
 		##########################
 
 		# skip if only contains only an apostrophe
 		# <your code here>
-		
+
 		# skip if only contains whitespace
 		# <your code here>
-	
-		########################## End Task 6
-	
 
-	
+		########################## End Task 6
+
+
+
 		##########################
 		# TASK 7 #
 		##########################
-		## Set to lowercase 
-		##########################		
+		## Set to lowercase
+		##########################
 		# minor edit needed to this line (perl has a handy function)
 		push @filteredtitles, $title;
 		########################## End Task 7
-		
+
 	}
-	# Updates @tracks	
-	return @filteredtitles;			
+	# Updates @tracks
+	return @filteredtitles;
 }
-	
-# This removes common stopwords	
+
+# This removes common stopwords
 sub stopwords{
 	if ($DEBUG){print "<filtering stopwords>\n";}
 	my @filteredtitles = ();
@@ -230,19 +230,19 @@ sub stopwords{
 	## Loop like before
 	## Use \b (word boundaries) in your regexs
 	##########################
-	
+
 
 	##########################
-	##                      ## 
+	##                      ##
 	## <Insert code here>   ##
-	##                      ##   
+	##                      ##
 	##########################
 	print "$name has not yet implemented filter stopwords.\n";  # delete when earned
 
 	########################## End Task 8
-	
-	# Updates @tracks	
-	return @filteredtitles;			
+
+	# Updates @tracks
+	return @filteredtitles;
 }
 
 
@@ -252,30 +252,30 @@ sub build_bigrams{
 	##########################
 	# TASK: Bigram Counts
 	##########################
-	## Loop through the tracks to split the titles into words. 
+	## Loop through the tracks to split the titles into words.
 	## Count all adjacent pairs.
 	##
-	## Following your diligent work, the %counts hash (declared up yonder) 
+	## Following your diligent work, the %counts hash (declared up yonder)
 	## should contain the bigram counts for all consecutive word pairs across
 	## the entire dataset of tracks
 	##
 	## Plan carefully.  It is not a lot of code.
 	##
-	## My approach is 10 lines (4 of which are just a closing curly-brace) 
-	##    (the take away is that it does not take much; 
+	## My approach is 10 lines (4 of which are just a closing curly-brace)
+	##    (the take away is that it does not take much;
 	##     there is no need to take exactly 10 lines)
 	##########################
-	
-	
+
+
 	##########################
-	##                      ## 
+	##                      ##
 	## <Insert code here>   ##
-	##                      ##   
+	##                      ##
 	##########################
 	print "$name has not yet implemented build_bigrams.\n";  # delete when earned
 	########################## End Task Bigram Counts
-	
-	if ($DEBUG){print "<bigram model built>\n";}	
+
+	if ($DEBUG){print "<bigram model built>\n";}
 }
 
 
@@ -285,43 +285,43 @@ sub mcw{
 	my $word = $_[0];
 	# Store the most common next word in this variable and return it.
 	my $best_word = '';
-	
+
 	##########################
 	# TASK: MCW
 	##########################
 	##
 	## Find all available "next" words for $word
-	## Sort them (there's a function for that), 
+	## Sort them (there's a function for that),
 	##   so your results are deterministic and match the tests
 	##
 	## Iterate through all the available words
 	##   that follow $word in the %counts
 	##
-	## Remember to check the %word_history	
+	## Remember to check the %word_history
 	##   and skip that word if used before
 	##
 	## Find the candidate word with highest count,
 	##   update $best_word (it gets returned)
-    ## 
+    ##
 	## In case of ties, stick with first one found
 	##    (i.e. use strictly > in your count comparison if)
 	##    that way you make the same choice the tests do
 	##
-	## This comment is longer than your code will be for this task. 
+	## This comment is longer than your code will be for this task.
 	##########################
-	
-	
+
+
 	##########################
-	##                      ## 
+	##                      ##
 	## <Insert code here>   ##
-	##                      ##   
+	##                      ##
 	##########################
 	print "$name has not yet implemented mcw.\n";  # delete when earned
 	########################## End Task MCW
-	
+
 
 	if ($DEBUG){print "  <mcw for \'$word\' is \'$best_word'\>\n";}
-	
+
 	# return the most common word to follow $word
 	return $best_word
 }
@@ -330,11 +330,11 @@ sub mcw{
 
 # This builds a song title based on mcw
 sub sequence{
-	if ($DEBUG){print "<sequence for \'$_[0]\'>\n";}	
-	
+	if ($DEBUG){print "<sequence for \'$_[0]\'>\n";}
+
 	# clear word history for new sequence
 	%word_history = ();
-		
+
 	##########################
 	# TASK: Build Song Title
 	##########################
@@ -346,14 +346,14 @@ sub sequence{
 	## Remember to track word history using %word_history
 	## My solution is about 12 lines (and could have been less)
 	##########################
-	
-	
+
+
 	##########################
-	##                      ## 
+	##                      ##
 	## <Insert code here>   ##
-	##                      ##   
+	##                      ##
 	##########################
-	
+
 	# return the sequence you created instead of this measely string
 	return "[ERROR: SEQUENCE 404]";
 	########################## End Task Song Title
@@ -374,44 +374,44 @@ sub sequence{
 ##############################
 ##                           #
 ##     Menu System           #
-##                           # 
+##                           #
 ##############################
-##                           # 
+##                           #
 ##  Read and understand      #
 ##   how to use the commands #
-##                           # 
-##  You do not need to edit  # 
-##    the menu code below.   # 
-##                           # 
-##  You may expand the menu  # 
+##                           #
+##  You do not need to edit  #
+##    the menu code below.   #
+##                           #
+##  You may expand the menu  #
 ##   to you add your own     #
-##   commands, if desired.   # 
-##  				         # 
-##  Do not break any of the  # 
-##   existing command rules  # 
-##   or you will fail tests. # 
-##                           # 
+##   commands, if desired.   #
+##  				         #
+##  Do not break any of the  #
+##   existing command rules  #
+##   or you will fail tests. #
+##                           #
 ##############################
 
 # This is the "command" loop that runs until end-of-input
-foreach $line ( <STDIN> ) {    
+foreach $line ( <STDIN> ) {
 	# read a line from standard input
 	chomp( $line );  # yummy!
-	
+
 	# split line into array of words
-	@input = split(/\s+/, $line);	
+	@input = split(/\s+/, $line);
 	# command is $input[0], first word
     $command = lc($input[0]);
 	# argument is $input[1], second word
-	
-	if ($command eq "load"){ 
-		# load the input file				
-		load($input[1]);	
-	}elsif ($command eq "length"){ 	
+
+	if ($command eq "load"){
+		# load the input file
+		load($input[1]);
+	}elsif ($command eq "length"){
 		# change the sequence length
 		if ($DEBUG){print "<sequence length " . $input[1] . ">\n";}
 		$SEQUENCE_LENGTH = $input[1];
-	}elsif ($command eq "debug"){ 
+	}elsif ($command eq "debug"){
 		# toggle debug mode on/off
 		if (lc($input[1]) eq "on"){
 			if ($DEBUG){print "<debug on>\n";}
@@ -422,9 +422,9 @@ foreach $line ( <STDIN> ) {
 		}else{
 			print "**Unrecognized argument to debug: " . $input[1] . "\n";
 		}
-	}elsif ($command eq "count"){ 
+	}elsif ($command eq "count"){
 		if (lc($input[1]) eq "tracks"){
-			# count the number of lines in @tracks			
+			# count the number of lines in @tracks
 			count_lines(@tracks);
 		}elsif (lc($input[1]) eq "words"){
 			# count the number of words in @tracks
@@ -435,7 +435,7 @@ foreach $line ( <STDIN> ) {
 		}else{
 			print "**Unrecognized argument: " . $input[1] . "\n";
 		}
-	}elsif ($command eq "stopwords"){ 
+	}elsif ($command eq "stopwords"){
 		# toggle stopwords on/off
 		if (lc($input[1]) eq "on"){
 			if ($DEBUG){print "<stopwords on>\n";}
@@ -446,28 +446,28 @@ foreach $line ( <STDIN> ) {
 		}else{
 			print "**Unrecognized argument: " . $input[1] . "\n";
 		}
-	}elsif ($command eq "filter"){ 
-		if ($input[1] eq "title"){		
+	}elsif ($command eq "filter"){
+		if ($input[1] eq "title"){
 			# extract the title from the line
 			@tracks = extract_title();
 		}elsif ($input[1] eq "comments"){
 			# filter out extra phrases from the titles
 			@tracks = comments();
 		}elsif ($input[1] eq "punctuation"){
-			# filter out punctuation		
+			# filter out punctuation
 			@tracks = punctuation();
 		}elsif ($input[1] eq "unicode"){
-			# filter out non-ASCII characters		
+			# filter out non-ASCII characters
 			@tracks = clean();
-		}elsif ($input[1] eq "stopwords" && $STOP_WORDS){	
+		}elsif ($input[1] eq "stopwords" && $STOP_WORDS){
 			# filter out common words, if enabled
-			@tracks = stopwords();		
+			@tracks = stopwords();
 		}else{
 			print "**Unrecognized argument to stopwords: " . $input[1] . "\n";
-		}	
-	}elsif ($command eq "preprocess"){ 
+		}
+	}elsif ($command eq "preprocess"){
 		# preprocess does all of the filtering tasks at once and builds bigrams
-		
+
 		# first, extract the title from the line
 		@tracks = extract_title();
 		# next, filter out extra phrases from the titles
@@ -475,10 +475,10 @@ foreach $line ( <STDIN> ) {
 		# next, filter out punctuation
 		@tracks = punctuation();
 		# next, filter out non-ASCII characters, blank titles
-		@tracks = clean();		
+		@tracks = clean();
 		# next, filter out common words, if enabled
 		if ($STOP_WORDS){@tracks = stopwords();}
-		
+
 		# build bi-gram model counting occurences of word pairs
 		build_bigrams();
 	}elsif ($command eq "build"){
@@ -487,7 +487,7 @@ foreach $line ( <STDIN> ) {
 	}elsif ($command eq "mcw"){
 		# print the most-common-word to follow given word
 		print mcw(lc($input[1])) . "\n";
-	}elsif ($command eq "sequence"){ 
+	}elsif ($command eq "sequence"){
 		# print a song title based on the given word
 		print sequence(lc($input[1])) . "\n";
 	}elsif ($command eq "print"){
@@ -495,18 +495,18 @@ foreach $line ( <STDIN> ) {
 		if ($input[1] > 0){
 			print_some_tracks($input[1]);
 		}else{
-			print_all_tracks(@tracks);	
+			print_all_tracks(@tracks);
 		}
-	}elsif ($command eq "author"){ 
-		print "Lab1 by $name run";		
-	}elsif ($command eq "name"){ 
+	}elsif ($command eq "author"){
+		print "Lab1 by $name run";
+	}elsif ($command eq "name"){
 		print sequence(lc($name))."\n";
-	}elsif ($command eq "random"){ 
-		print sequence((keys %counts)[rand keys %counts])."\n";			
+	}elsif ($command eq "random"){
+		print sequence((keys %counts)[rand keys %counts])."\n";
 	}else{
 		# warn user if command was ignored
 		print "**Unrecognized command: " . $command . "\n";
-	}	
+	}
 }
 
 
@@ -515,41 +515,41 @@ foreach $line ( <STDIN> ) {
 ##############################
 ##                           #
 ##     Helper Functions      #
-##                           # 
+##                           #
 ##############################
-##                           # 
-## Below contains important  # 
-## functions the menu uses.  # 
-##                           # 
+##                           #
+## Below contains important  #
+## functions the menu uses.  #
+##                           #
 ##                           #
 ## Feel free to look around. #
-##                           # 
+##                           #
 ## Help yourself to the      #
 ##     cookies and punch.    #
 ##                           #
 ## Look but don't touch.     #
 ##                           #
 ## You break it,             #
-##         you bought it!    # 
+##         you bought it!    #
 ##############################
 
 
-# This loops through N lines of the array 
-sub print_some_tracks{	
+# This loops through N lines of the array
+sub print_some_tracks{
 	my $n = $_[0];
-	if ($DEBUG){print "<printing $n$ tracks>\n";}	
+	if ($DEBUG){print "<printing $n$ tracks>\n";}
 	for (my $i=0; $i < $n; $i++) {
 		print $tracks[$i];
-	} 
+	}
 }
 
 # This loops through each line of the array
-sub print_all_tracks{	
-	if ($DEBUG){print "<printing all tracks>\n";}	
+sub print_all_tracks{
+	if ($DEBUG){print "<printing all tracks>\n";}
 	# are you sure you want to? (use CTRL+C to kill it)
-	foreach (@_) { 
+	foreach (@_) {
 		print $_;
-	} 
+	}
 }
 
 # Count lines of array
@@ -562,8 +562,8 @@ sub count_lines{
 sub count_words{
 	if ($DEBUG){print "<counting number of words>\n";}
 	my $word_count = 0;
-	foreach (@_) { 
-		@w = split(/\s+/, $_);		
+	foreach (@_) {
+		@w = split(/\s+/, $_);
 		$word_count += 0+@w;
 	}
 	print $word_count . "\n";
@@ -573,7 +573,7 @@ sub count_words{
 sub count_characters{
 	if ($DEBUG){print "<counting number of characters>\n";}
 	my $char_count = 0;
-	foreach (@_) { 
+	foreach (@_) {
 		$char_count += length($_);
 	}
 	print $char_count . "\n";
@@ -582,6 +582,6 @@ sub count_characters{
 # Loads the tracks file into an array
 sub load{
 	open(INFILE, $_[0]) or die "Cannot open $_[0]: $!.\n";
-	@tracks = <INFILE>;	
-	if ($DEBUG){print "<loaded " . $input[1] . ">\n";}	
+	@tracks = <INFILE>;
+	if ($DEBUG){print "<loaded " . $input[1] . ">\n";}
 }

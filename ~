@@ -73,7 +73,7 @@ sub comments{
 	if ($DEBUG){print "<filtering comments>\n";}
 	my @filteredtitles = ();
 
-	#	print "$name has not yet implemented filter comments.\n";  # delete when earned
+	print "$name has not yet implemented filter comments.\n";  # delete when earned
 
 	# This loops through each track
 	foreach my $title (@tracks) {
@@ -157,7 +157,7 @@ sub punctuation{
 	## <Insert code here>   ##
 	##                      ##
 	##########################
-	#	print "$name has not yet implemented filter punctuation.\n";  # delete when earned
+	print "$name has not yet implemented filter punctuation.\n";  # delete when earned
 
 	########################## End Task 3
 
@@ -181,7 +181,7 @@ sub clean{
 	##   or an if statement and a subsequent action (e.g. skip to next without adding)
 	##########################
 
-	#	print "$name has not yet implemented filter unicode.\n";  # delete when earned
+	print "$name has not yet implemented filter unicode.\n";  # delete when earned
 
 	# This loops through each track
 	foreach my $title (@tracks) {
@@ -193,12 +193,12 @@ sub clean{
 		##########################
 
 		# replace leading/trailing apostrophe
-		$title =~ s/^'+//g;
-		$title =~ s/'+$//g;
+		$title =~ s/^'*//g;
+		$title =~ s/'*$//g;
 
 		# trim whitespace on either end
-		$title =~ s/^\s+//g;
-		$title =~ s/\s+$//g;
+		$title =~ s/^\s*//g;
+		$title =~ s/\s*$//g;
 
 		########################## End Task 4
 
@@ -213,15 +213,13 @@ sub clean{
 		# skip title if contains any single non-English character
 
 #		next if ($title =~ m/[])
-		next if($title =~ m/[^\[0-9A-Za-z\]|\s|\']|\[|\]|\_|\.|\|/g);
 
+#		next if ($title =~ m/[^\x00-\x7F]+/g);
 
-		#ext if ($title =~ m/[^\x00-\x7F]+/g);
-
-		#		next if ($title =~ m/[^\w|\s|']/g);
-		#		if ($title =~ m/[^\x00-\x7F]+/g){
-		#			print("$title\n");
-		#	}
+		next if ($title =~ m/[^\w|\s|']/g);
+		if ($title =~ m/[^\x00-\x7F]+/g){
+			print("$title\n");
+		}
 
 
 		########################## End Task 5
@@ -236,6 +234,7 @@ sub clean{
 
 		# skip if only contains only an apostrophe
 		next if ($title =~ m/^'*$/);
+
 		# skip if only contains whitespace
 		next if ($title =~ /^\s*$/);
 
@@ -246,7 +245,7 @@ sub clean{
 		##########################
 		## Set to lowercase
 		$title = lc $title;
-		#print("$title\n");
+
 		push @filteredtitles, $title;
 		########################## End Task 7
 
@@ -270,32 +269,14 @@ sub stopwords{
 	## Loop like before
 	## Use \b (word boundaries) in your regexs
 	##########################
-	foreach my $title (@tracks){
-		$title =~ s/\ba\b\s//g;
-		$title =~ s/\ban\b\s//g;
-		$title =~ s/\band\b\s//g;
-		$title =~ s/\bby\b\s//g;
-		$title =~ s/\bfor\b\s//g;
-		$title =~ s/\bfrom\b\s//g;
-		$title =~ s/\bin\b\s//g;
-		$title =~ s/\bof\b\s//g;
-		$title =~ s/\bon\b\s//g;
-		$title =~ s/\bor\b\s//g;
-		$title =~ s/\bout\b\s//g;
-		$title =~ s/\bthe\b\s//g;
-		$title =~ s/\bto\b\s//g;
-		$title =~ s/\bwith\b\s//g;
 
-		#		print("$title\n");
 
-		push @filteredtitles, $title;
-	}
 	##########################
 	##                      ##
 	## <Insert code here>   ##
 	##                      ##
 	##########################
-	#	print "$name has not yet implemented filter stopwords.\n";  # delete when earned
+	print "$name has not yet implemented filter stopwords.\n";  # delete when earned
 
 	########################## End Task 8
 
