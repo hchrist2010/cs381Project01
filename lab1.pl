@@ -73,8 +73,6 @@ sub comments{
 	if ($DEBUG){print "<filtering comments>\n";}
 	my @filteredtitles = ();
 
-	#	print "$name has not yet implemented filter comments.\n";  # delete when earned
-
 	# This loops through each track
 	foreach my $title (@tracks) {
 
@@ -83,32 +81,20 @@ sub comments{
 		##########################
 		## Add regex substitutions to remove superflous comments and all that follows them
 		##########################
-#		print("$title\n");
-#		my @a = (1..3);
-#		for(@a){
-			$title =~ s/\(.*//g;
-			$title =~ s/\[.*//g;
-			$title =~ s/\{.*//g;
-			$title =~ s/\\.*//g;
-			$title =~ s/\/.*//g;
-			$title =~ s/\_.*//g;
-			$title =~ s/\-.*//g;
-			$title =~ s/\:.*//g;
-			$title =~ s/\".*//g;
-			$title =~ s/\`.*//g;
-			$title =~ s/\+.*//g;
-			$title =~ s/\=.*//g;
-			$title =~ s/(feat\.).*//g;
-		##########################
-		##                      ##
-		## <Insert code here>   ##
-		##                      ##
-		##########################
+		$title =~ s/\(.*//g;
+		$title =~ s/\[.*//g;
+		$title =~ s/\{.*//g;
+		$title =~ s/\\.*//g;
+		$title =~ s/\/.*//g;
+		$title =~ s/\_.*//g;
+		$title =~ s/\-.*//g;
+		$title =~ s/\:.*//g;
+		$title =~ s/\".*//g;
+		$title =~ s/\`.*//g;
+		$title =~ s/\+.*//g;
+		$title =~ s/\=.*//g;
+		$title =~ s/(feat\.).*//g;
 
-
-		########################## End Task 2
-
-		# Add the edited $title to the new array of titles
 		push @filteredtitles, $title;
 	}
 	# Updates @tracks
@@ -126,11 +112,6 @@ sub punctuation{
 	# TASK 3 #
 	##########################
 	## Add regex substitutions to remove punctuation
-	## Remember to permit the apostrophe ' (near enter)
-	## Use the g (greedy) directive
-	## You need to write the loop (hint it's same one used in Task 2)
-	## Make sure to add you edited title to the new @filteredtitles array,
-	##    which replaces @tracks when returned.
 	##########################
 	# This loops through each track
 	foreach my $title (@tracks) {
@@ -152,13 +133,6 @@ sub punctuation{
 
 		push @filteredtitles, $title;
 	}
-	##########################
-	##                      ##
-	## <Insert code here>   ##
-	##                      ##
-	##########################
-	#	print "$name has not yet implemented filter punctuation.\n";  # delete when earned
-
 	########################## End Task 3
 
 	# Updates @tracks
@@ -180,8 +154,6 @@ sub clean{
 	##   will be either a regex substitution
 	##   or an if statement and a subsequent action (e.g. skip to next without adding)
 	##########################
-
-	#	print "$name has not yet implemented filter unicode.\n";  # delete when earned
 
 	# This loops through each track
 	foreach my $title (@tracks) {
@@ -212,17 +184,7 @@ sub clean{
 
 		# skip title if contains any single non-English character
 
-#		next if ($title =~ m/[])
 		next if($title =~ m/[^\[0-9A-Za-z\]|\s|\']|\[|\]|\_|\.|\|/g);
-
-
-		#ext if ($title =~ m/[^\x00-\x7F]+/g);
-
-		#		next if ($title =~ m/[^\w|\s|']/g);
-		#		if ($title =~ m/[^\x00-\x7F]+/g){
-		#			print("$title\n");
-		#	}
-
 
 		########################## End Task 5
 
@@ -246,7 +208,6 @@ sub clean{
 		##########################
 		## Set to lowercase
 		$title = lc $title;
-		#print("$title\n");
 		push @filteredtitles, $title;
 		########################## End Task 7
 
@@ -266,10 +227,6 @@ sub stopwords{
 	##########################
 	# TASK 8 #
 	##########################
-	## Add regex substitutions to remove common stopwords
-	## Loop like before
-	## Use \b (word boundaries) in your regexs
-	##########################
 	foreach my $title (@tracks){
 		$title =~ s/\ba\b\s//g;
 		$title =~ s/\ban\b\s//g;
@@ -286,20 +243,9 @@ sub stopwords{
 		$title =~ s/\bto\b\s//g;
 		$title =~ s/\bwith\b\s//g;
 
-		#		print("$title\n");
 
 		push @filteredtitles, $title;
 	}
-	##########################
-	##                      ##
-	## <Insert code here>   ##
-	##                      ##
-	##########################
-	#	print "$name has not yet implemented filter stopwords.\n";  # delete when earned
-
-	########################## End Task 8
-
-	# Updates @tracks
 	return @filteredtitles;
 }
 
