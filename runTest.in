@@ -1,7 +1,6 @@
 debug off
+stopwords on
 load test01.txt
-filter title
-filter unicode
-count tracks
-count words
-count characters
+preprocess
+mcw hunter
+mcw hunter
