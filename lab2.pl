@@ -199,7 +199,7 @@ sub clean{
 		# skip if only contains only an apostrophe
 		next if ($title =~ m/^'*$/);
 		# skip if only contains whitespace
-		next if ($title =~ /^\s*$/);
+		next if ($title =~ /^\s+$/);
 
 		########################## End Task 6
 
@@ -271,7 +271,7 @@ sub build_bigrams{
 	##########################
 
 	foreach $title(@tracks){
-		my @wordArray = split(/ /, $title);
+		my @wordArray = split(m/\s+/, $title);
 		for(my $i = 0; $i < $#wordArray; $i++){
 			if(!exists($counts{$wordArray[$i]})){
 				$counts{$wordArray[$i]} = {};
@@ -302,20 +302,18 @@ sub mcw{
 	my $best_word = '';
 	my $temp = 0;
 	#$print("$word\n");
-	foreach my $word2 (keys %{$counts{$word}}){
-		if ($counts{$word}{$word2} >= $temp + 1){
+	foreach my $word2 (sort keys %{$counts{$word}}){
+		if ($counts{$word}{$word2} > $temp){
 			if($word_history{$word2} != 1){
-				$word_history{$word2} = 1;
 				$temp = $counts{$word}{$word2};
 				$best_word = $word2;
 			}
-
 		}
 		#print("$word $word2: $counts{$word}{$word2}\n");
 	}
 
-	#print("$best_word\n");
-	return $best_word;
+#	print("$best_word\n");
+	#return $best_word;
 	##########################
 	# TASK: MCW
 	##########################
@@ -365,6 +363,22 @@ sub sequence{
 	# clear word history for new sequence
 	%word_history = ();
 
+	my @array = [];
+	@array[0] = $_[0];
+	my $string = $_[0];
+	$word_history{@array[0]} = 1;
+
+	for(my $i = 1; $i <= $SEQUENCE_LENGTH; $i++){
+		if(@array[$i - 1] =~ m/^$/g){
+			return $string;
+		}
+		push(@array, mcw(@array[$i - 1]));
+		$word_history{@array[$i]} = 1;
+		$string = "$string @array[$i]";
+#		print("@array[$i]\n");
+	}
+	return $string;
+
 	##########################
 	# TASK: Build Song Title
 	##########################
@@ -385,7 +399,6 @@ sub sequence{
 	##########################
 
 	# return the sequence you created instead of this measely string
-	return "[ERROR: SEQUENCE 404]";
 	########################## End Task Song Title
 }
 
